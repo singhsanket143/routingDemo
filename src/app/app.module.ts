@@ -17,7 +17,7 @@ const appRoutes: Route[] = [
   {path: '', component: HomeComponent},
   {path: 'servers', component: ServersComponent, children:[
     {path: ':id', component: ServerComponent},
-    {path: ':id/edit', component: ServersComponent}
+    {path: ':id/edit', component: EditServerComponent}
   ]},
 
   {path: 'users', component: UsersComponent, children: [
