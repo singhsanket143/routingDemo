@@ -7,16 +7,16 @@ import {UserComponent} from './users/user/user.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {UsersComponent} from './users/users.component';
 import {Route, Routes, RouterModule} from '@angular/router';
+import {AuthGuardService} from './auth-guard.service';
 
 const appRoutes: Route[] = [
   {path: '', component: HomeComponent},
   {
-    path: 'servers', component: ServersComponent, children: [
+    path: 'servers', canActivate: [AuthGuardService], component: ServersComponent, children: [
     {path: ':id', component: ServerComponent},
     {path: ':id/edit', component: EditServerComponent}
   ]
   },
-
   {
     path: 'users', component: UsersComponent, children: [
     {path: ':id/:name', component: UserComponent}
@@ -24,8 +24,8 @@ const appRoutes: Route[] = [
   },
   {path: 'not-found', component: PageNotFoundComponent},
   {path: '**', redirectTo: '/not-found'}
-
 ];
+
 @NgModule({
   imports: [
     RouterModule.forRoot(appRoutes)
