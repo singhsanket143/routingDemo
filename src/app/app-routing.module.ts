@@ -8,7 +8,8 @@ import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {UsersComponent} from './users/users.component';
 import {Route, Routes, RouterModule} from '@angular/router';
 import {AuthGuardService} from './auth-guard.service';
-import {CanDeactivateGuardService} from "./servers/edit-server/can-deactivate-guard.service";
+import {CanDeactivateGuardService} from './servers/edit-server/can-deactivate-guard.service';
+import {ErrorPageComponent} from './error-page/error-page.component';
 
 const appRoutes: Route[] = [
   {path: '', component: HomeComponent},
@@ -23,7 +24,9 @@ const appRoutes: Route[] = [
     {path: ':id/:name', component: UserComponent}
   ]
   },
-  {path: 'not-found', component: PageNotFoundComponent},
+  // {path: 'not-found', component: PageNotFoundComponent},
+  {path: 'not-found', component: ErrorPageComponent, data: {message: 'Page Not Found'}},
+
   {path: '**', redirectTo: '/not-found'}
 ];
 
